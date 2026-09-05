@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project_name }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>区块链活跃度分析仪表盘</h1>
+        <div class="header-status">
+            <span class="status-dot"></span>
+            <span id="status-text">就绪</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 项目选择器 -->
+        <div class="chain-selector" id="chain-selector">
+            <button class="chain-btn active" data-chain="uni">
+                <span class="symbol">UNI</span> Uniswap
+            </button>
+            <button class="chain-btn" data-chain="crv">
+                <span class="symbol">CRV</span> Curve
+            </button>
+            <button class="chain-btn" data-chain="near">
+                <span class="symbol">NEAR</span> NEAR Protocol
+            </button>
+            <button class="chain-btn" data-chain="ltc">
+                <span class="symbol">LTC</span> Litecoin
+            </button>
+            <button class="chain-btn" data-chain="compare" style="margin-left:auto;">
+                横向对比
+            </button>
+        </div>
+
+        <!-- 主内容区 -->
+        <div id="main-content">
+            <!-- 指标卡片 -->
+            <div class="grid-4" id="metric-cards"></div>
+
+            <!-- 图表区 -->
+            <div class="grid-2">
+                <div class="section" id="chart-tvl-section">
+                    <div class="section-header">
+                        <span class="section-title">TVL / 市值趋势</span>
+                    </div>
+                    <div class="chart-container" id="chart-tvl-container">
+                        <canvas id="chart-tvl"></canvas>
+                    </div>
+                </div>
+                <div class="section" id="chart-dev-section">
+                    <div class="section-header">
+                        <span class="section-title">开发者活跃度</span>
+                    </div>
+                    <div class="chart-container" id="chart-dev-container">
+                        <canvas id="chart-dev"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 开发者与GitHub -->
+            <div class="grid-2" id="developer-section-container"></div>
+
+            <!-- 新闻与情绪 -->
+            <div class="section" id="news-section">
+                <div class="section-header">
+                    <span class="section-title">新闻舆情</span>
+                    <div class="tabs" id="news-tabs">
+                        <button class="tab active" data-tab="all">全部</button>
+                        <button class="tab" data-tab="positive">利好</button>
+                        <button class="tab" data-tab="negative">利空</button>
+                    </div>
+                </div>
+                <div id="sentiment-overview"></div>
+                <div class="news-list" id="news-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

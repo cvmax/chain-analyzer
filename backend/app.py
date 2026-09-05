@@ -3,7 +3,7 @@
 """
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
@@ -16,10 +16,11 @@ from data_fetchers import (
 )
 from config import SUPPORTED_CHAINS, PROJECT_NAME, VERSION
 
+_root = os.path.dirname(os.path.abspath(__file__))
 app = Flask(
     __name__,
-    template_folder="../frontend/templates",
-    static_folder="../frontend/static"
+    template_folder=os.path.join(_root, "..", "frontend", "templates"),
+    static_folder=os.path.join(_root, "..", "frontend", "static"),
 )
 CORS(app)
 

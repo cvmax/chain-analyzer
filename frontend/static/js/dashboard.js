@@ -150,7 +150,7 @@ function renderMetricCards(data) {
         <div class="metric-card">
             <div class="metric-label">${c.label}</div>
             <div class="metric-value">${c.value}</div>
-            ${c.change != null ? `
+            ${c.change != null && typeof c.change === 'number' ? `
                 <div class="metric-change ${c.change > 0 ? 'positive' : c.change < 0 ? 'negative' : 'neutral'}">
                     ${c.change > 0 ? '▲' : c.change < 0 ? '▼' : ''} ${c.change.toFixed(2)}% ${c.changeLabel}
                 </div>
